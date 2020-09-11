@@ -13,7 +13,7 @@ public interface ProjectService {
 
     @FormUrlEncoded
     @POST()
-    Call<Project>submitProject(@Url String url,
+    Call<Void>submitProject(@Url String url,
                                @Field("entry.1877115667") String firstName,
                                @Field("entry.2006916086") String lastName,
                                @Field("entry.1824927963") String emailAddress,

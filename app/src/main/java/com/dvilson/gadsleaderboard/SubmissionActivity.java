@@ -129,14 +129,15 @@ public class SubmissionActivity extends AppCompatActivity {
     private void submitProject(){
 
         ProjectService taskService = ServiceBuilder.buildService(ProjectService.class);
-        Call<Project> call = taskService.submitProject(URL,
+        Call<Void> call = taskService.submitProject(URL,
                 firstName.getText().toString().trim(),
                 lastName.getText().toString().trim(),
                 emailAddress.getText().toString().trim(),
                 projectLink.getText().toString().trim());
-        call.enqueue(new Callback<Project>() {
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Project> call, Response<Project> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse: "+response.code());
                if(response.isSuccessful()){
                    Log.d(TAG, "onResponse: "+response.code());
                    successfulDialog();
@@ -146,11 +147,16 @@ public class SubmissionActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Project> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.getMessage());
                 onFailureDialog();
 
             }
         });
+    }
+
+    private void clearEditext(){
+
+        firstName.clea
     }
 }
