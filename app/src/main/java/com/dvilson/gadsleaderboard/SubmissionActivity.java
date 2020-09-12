@@ -155,8 +155,5 @@ public class SubmissionActivity extends AppCompatActivity {
         });
     }
 
-    private void clearEditext(){
 
-        firstName.clea
-    }
 }
